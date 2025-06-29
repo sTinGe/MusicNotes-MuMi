@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct ScoreLibraryView: View {
-    // Placeholder data
-    let scores: [Score] = [
-        Score(id: UUID(), filename: "Score 1.pdf", url: URL(string: "file:///score1.pdf")!),
-        Score(id: UUID(), filename: "Score 2.pdf", url: URL(string: "file:///score2.pdf")!),
-        Score(id: UUID(), filename: "Score 3.pdf", url: URL(string: "file:///score3.pdf")!)
-    ]
+    @StateObject private var viewModel = ScoreLibraryViewModel()
 
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -22,11 +17,14 @@ struct ScoreLibraryView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(scores) { score in
+                ForEach(viewModel.scores) { score in
                     ScoreThumbnailView(score: score)
                 }
             }
             .padding()
+        }
+        .onAppear {
+            viewModel.loadScores()
         }
     }
 }
