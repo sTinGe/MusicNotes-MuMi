@@ -2,7 +2,7 @@
 # Makefile for Mumi iOS App
 
 # Variables
-PROJECT = Mumi.xcodeproj
+WORKSPACE = Mumi.xcworkspace
 SCHEME = Mumi
 DESTINATION = 'platform=iOS Simulator,name=iPhone 16 Pro'
 
@@ -12,11 +12,11 @@ DESTINATION = 'platform=iOS Simulator,name=iPhone 16 Pro'
 all: build
 
 build:
-	xcodebuild build -project $(PROJECT) -scheme $(SCHEME) -destination $(DESTINATION)
+	xcodebuild build -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION)
 
 test:
-	xcodebuild test -project $(PROJECT) -scheme $(SCHEME) -destination $(DESTINATION)
+	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION)
 
 lint:
-	swiftlint
+	swift package plugin --allow-writing-to-package-directory swiftlint
 
