@@ -9,22 +9,49 @@ import SwiftUI
 
 struct ScoreLibraryView: View {
     @StateObject private var viewModel = ScoreLibraryViewModel()
+    @State private var isImporterPresented = false
 
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(viewModel.scores) { score in
-                    ScoreThumbnailView(score: score)
+        VStack {
+            HeaderView(onAdd: {
+                isImporterPresented = true
+            })
+
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(viewModel.scores) { score in
+                        ScoreThumbnailView(score: score)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.deleteScore(score)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
         .onAppear {
             viewModel.loadScores()
+        }
+        .fileImporter(
+            isPresented: $isImporterPresented,
+            allowedContentTypes: [.pdf]
+        ) { result in
+            switch result {
+            case .success(let url):
+                viewModel.importScore(from: url)
+                isImporterPresented = false
+            case .failure(let error):
+                print("Error importing file: \(error.localizedDescription)")
+                isImporterPresented = false
+            }
         }
     }
 }

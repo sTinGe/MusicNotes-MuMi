@@ -46,3 +46,6 @@ Package.resolved
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Environment variables
+.env*

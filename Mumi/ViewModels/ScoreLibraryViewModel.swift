@@ -8,4 +8,14 @@ class ScoreLibraryViewModel: ObservableObject {
     func loadScores() {
         self.scores = scoreService.fetchScores()
     }
+
+    func importScore(from url: URL) {
+        scoreService.importScore(from: url)
+        loadScores()
+    }
+
+    func deleteScore(_ score: Score) {
+        scoreService.deleteScore(score)
+        loadScores()
+    }
 }
