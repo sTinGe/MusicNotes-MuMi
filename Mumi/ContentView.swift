@@ -7,18 +7,33 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ScoreLibraryView: View {
+    @StateObject private var viewModel = ScoreLibraryViewModel()
+
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(viewModel.scores) { score in
+                        ScoreThumbnailView(score: score)
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("My Scores")
+            .onAppear {
+                viewModel.loadScores()
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScoreLibraryView()
+    }
 }
