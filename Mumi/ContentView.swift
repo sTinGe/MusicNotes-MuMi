@@ -37,6 +37,7 @@ struct ScoreLibraryView: View {
                 .padding()
             }
         }
+        .background(Color.Theme.background)
         .onAppear {
             viewModel.loadScores()
         }

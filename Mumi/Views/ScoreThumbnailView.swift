@@ -14,10 +14,12 @@ struct ScoreThumbnailView: View {
             } else {
                 Image(systemName: "doc.text.image")
                     .font(.largeTitle)
+                    .foregroundColor(Color.Theme.text.opacity(0.5))
                     .frame(width: 150, height: 200)
             }
             Text(score.filename)
                 .font(.caption)
+                .foregroundColor(Color.Theme.text)
         }
         .onAppear {
             DispatchQueue.global(qos: .userInitiated).async {
