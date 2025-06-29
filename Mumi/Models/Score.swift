@@ -1,7 +1,7 @@
 import Foundation
 
 struct Score: Identifiable {
-    let id: UUID
+    var id: String { url.absoluteString }
     let filename: String
     let url: URL
 }
