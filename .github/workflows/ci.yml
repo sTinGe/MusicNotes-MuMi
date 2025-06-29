@@ -6,10 +6,13 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Lint
+      run: make lint
 
     - name: Build
       run: make build
