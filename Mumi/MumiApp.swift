@@ -11,7 +11,7 @@ import SwiftUI
 struct MumiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ScoreLibraryView()
         }
     }
 }
