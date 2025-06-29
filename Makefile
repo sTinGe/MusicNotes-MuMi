@@ -18,5 +18,5 @@ test:
 	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION)
 
 lint:
-	swiftlint
+	swift package plugin --allow-writing-to-package-directory swiftlint
 
