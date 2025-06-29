@@ -6,6 +6,6 @@ let package = Package(
     name: "MumiTools",
     platforms: [.macOS(.v13)],
     dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint", from: "0.55.1"),
+        .package(url: "https://github.com/realm/SwiftLint", from: "0.55.1")
     ]
 )
