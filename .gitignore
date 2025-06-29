@@ -36,7 +36,7 @@ DerivedData/
 Package.pins
 Package.resolved
 .build/
-*.xcodeproj
+
 
 # OS generated files
 .DS_Store
@@ -46,6 +46,4 @@ Package.resolved
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Environment variables
-.env*
+.env
