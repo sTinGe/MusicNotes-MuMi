@@ -20,16 +20,13 @@ struct ScoreLibraryView: View {
     ]
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(scores) { score in
-                        ScoreThumbnailView(score: score)
-                    }
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(scores) { score in
+                    ScoreThumbnailView(score: score)
                 }
-                .padding()
             }
-            .navigationTitle("My Scores")
+            .padding()
         }
     }
 }
