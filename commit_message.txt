@@ -1,0 +1,1 @@
+feat(ui): Add header and footer to ScoreDetailView
