@@ -29,9 +29,22 @@
 		BE8EA97F2E116D0F00B214A1 /* MumiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MumiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BEB4FCAE2E12612100DA46AC /* Exceptions for "Mumi" folder in "MumiUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AccessibilityIdentifiers.swift,
+			);
+			target = BE8EA97E2E116D0F00B214A1 /* MumiUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE8EA96A2E116D0B00B214A1 /* Mumi */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BEB4FCAE2E12612100DA46AC /* Exceptions for "Mumi" folder in "MumiUITests" target */,
+			);
 			path = Mumi;
 			sourceTree = "<group>";
 		};

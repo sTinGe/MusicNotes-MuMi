@@ -3,7 +3,15 @@ import Foundation
 class ScoreLibraryViewModel: ObservableObject {
     @Published var scores: [Score] = []
 
-    private let scoreService = ScoreService()
+    private let scoreService: ScoreService
+
+    init() {
+        if ProcessInfo.processInfo.arguments.contains("-uiTestMode") {
+            self.scoreService = MockScoreService()
+        } else {
+            self.scoreService = ScoreService()
+        }
+    }
 
     func loadScores() {
         self.scores = scoreService.fetchScores()

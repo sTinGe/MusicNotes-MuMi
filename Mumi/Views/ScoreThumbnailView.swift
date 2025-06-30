@@ -16,6 +16,7 @@ struct ScoreThumbnailView: View {
                     .font(.largeTitle)
                     .foregroundColor(Color.Theme.text.opacity(0.5))
                     .frame(width: 150, height: 200)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailPlaceholder)
             }
             Text(score.filename)
                 .font(.caption)
