@@ -16,15 +16,19 @@ struct ScoreLibraryView: View {
     ]
 
     var body: some View {
-        VStack {
-            HeaderView(onAdd: {
-                isImporterPresented = true
-            })
+        NavigationView {
+            VStack {
+                HeaderView(onAdd: {
+                    isImporterPresented = true
+                })
 
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(viewModel.scores) { score in
-                        ScoreThumbnailView(score: score)
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.scores) { score in
+                            NavigationLink(destination: ScoreDetailView(score: score)) {
+                                ScoreThumbnailView(score: score)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                             .contextMenu {
                                 Button(role: .destructive) {
                                     viewModel.deleteScore(score)
@@ -32,27 +36,29 @@ struct ScoreLibraryView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
+                        }
                     }
+                    .padding()
                 }
-                .padding()
             }
-        }
-        .background(Color.Theme.background)
-        .onAppear {
-            viewModel.loadScores()
-        }
-        .fileImporter(
-            isPresented: $isImporterPresented,
-            allowedContentTypes: [.pdf]
-        ) { result in
-            switch result {
-            case .success(let url):
-                viewModel.importScore(from: url)
-                isImporterPresented = false
-            case .failure(let error):
-                print("Error importing file: \(error.localizedDescription)")
-                isImporterPresented = false
+            .background(Color.Theme.background)
+            .onAppear {
+                viewModel.loadScores()
             }
+            .fileImporter(
+                isPresented: $isImporterPresented,
+                allowedContentTypes: [.pdf]
+            ) { result in
+                switch result {
+                case .success(let url):
+                    viewModel.importScore(from: url)
+                    isImporterPresented = false
+                case .failure(let error):
+                    print("Error importing file: \(error.localizedDescription)")
+                    isImporterPresented = false
+                }
+            }
+            .navigationBarHidden(true)
         }
     }
 }

@@ -1,0 +1,1 @@
+feat(score): Implement Score Detail View
