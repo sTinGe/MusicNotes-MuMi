@@ -8,10 +8,12 @@ struct HeaderView: View {
             Text("My Scores")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .foregroundColor(Color.Theme.text)
             Spacer()
             Button(action: onAdd) {
                 Image(systemName: "plus")
                     .font(.largeTitle)
+                    .foregroundColor(Color.Theme.accent)
             }
         }
         .padding()
