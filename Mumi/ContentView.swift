@@ -60,6 +60,7 @@ struct ScoreLibraryView: View {
             }
             .navigationBarHidden(true)
         }
+        .navigationViewStyle(.stack)
     }
 }
 

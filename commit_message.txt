@@ -1,1 +1,1 @@
-feat(score): Implement Score Detail View
+feat(ui): Add header and footer to ScoreDetailView
