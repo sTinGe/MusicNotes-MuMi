@@ -57,6 +57,6 @@ class ScoreService {
         guard let document = PDFDocument(url: url), let page = document.page(at: 0) else {
             return nil
         }
-        return page.thumbnail(of: CGSize(width: 150, height: 200), for: .artBox)
+        return page.thumbnail(of: CGSize(width: 600, height: 800), for: .artBox)
     }
 }
