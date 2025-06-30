@@ -19,10 +19,10 @@ test:
 	make test-ui
 
 test-unit:
-	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION) -skip-testing:MumiUITests
+	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION) -testPlan Mumi -skip-testing:MumiUITests
 
 test-ui:
-	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION) -only-testing:MumiUITests
+	xcodebuild test -workspace $(WORKSPACE) -scheme $(SCHEME) -destination $(DESTINATION) -testPlan Mumi -only-testing:MumiUITests
 
 lint:
 	swift package plugin --allow-writing-to-package-directory swiftlint

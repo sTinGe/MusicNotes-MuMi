@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "E3E44968-E13D-463A-9054-B44461F45F95",
+      "name" : "Configuration 1",
+      "options" : {
+        "codeCoverage" : true
+      },
+      "targets" : [
+        {
+          "target" : {
+            "containerPath" : "project:Mumi.xcodeproj",
+            "identifier" : "1E6A723A2C2F306B004A981E",
+            "name" : "MumiTests"
+          }
+        },
+        {
+          "target" : {
+            "containerPath" : "project:Mumi.xcodeproj",
+            "identifier" : "1E6A72452C2F306B004A981E",
+            "name" : "MumiUITests"
+          }
+        }
+      ]
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "version" : 1
+}
