@@ -28,6 +28,7 @@ struct ScoreLibraryView: View {
                             NavigationLink(destination: ScoreDetailView(score: score)) {
                                 ScoreThumbnailView(score: score)
                             }
+                            .padding(8)
                             .buttonStyle(PlainButtonStyle())
                             .contextMenu {
                                 Button(role: .destructive) {
