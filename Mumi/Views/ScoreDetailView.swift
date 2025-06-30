@@ -19,5 +19,6 @@ struct ScoreDetailView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .accessibilityIdentifier(AccessibilityIdentifiers.scoreDetailView)
     }
 }
