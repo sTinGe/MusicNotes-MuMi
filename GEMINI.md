@@ -72,3 +72,18 @@ swiftlint
   - https://developer.apple.com/sf-symbols/
 - **SwiftUI Documentation:** Technical documentation for all UI components.
   - https://developer.apple.com/documentation/swiftui/
+
+### Color System: "Ocean Depths"
+
+| Role | Light Mode | Dark Mode |
+| :--- | :--- | :--- |
+| **Primary** | `#005A9C` | `#50A5FF` |
+| **On Primary** | `#FFFFFF` | `#000000` |
+| **Surface** | `#F0F4F8` | `#1A1D21` |
+| **On Surface** | `#2C3E50` | `#D0D8E0` |
+| **Background** | `#F0F4F8` | `#1A1D21` |
+| **On Background**| `#2C3E50` | `#D0D8E0` |
+| **Secondary** | `#5A7D9A` | `#A9C7E0` |
+| **On Secondary**| `#FFFFFF` | `#000000` |
+| **Error** | `#B00020` | `#FFB4AB` |
+| **On Error** | `#FFFFFF` | `#69000F` |
