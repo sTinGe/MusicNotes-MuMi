@@ -29,11 +29,11 @@ This is an automatic music score scrolling app for iOS. It provides a hands-free
 
 - **Primary Scheme:** `Mumi`
 - **Configuration:** `Debug`
-- **Target Simulator:** `iPhone 15 Pro (Latest iOS)`
+- **Target Simulator:** `iPhone 16 Pro (Latest iOS)`
 
 **To build from the command line:**
 ```bash
-xcodebuild build -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+xcodebuild build -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
 ```
 
 **To run from the command line:**
@@ -51,7 +51,7 @@ xcodebuild build -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform
 
 **To run tests from the command line:**
 ```bash
-xcodebuild test -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+xcodebuild test -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
 ```
 
 ## 7. Code Style & Linting
