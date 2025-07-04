@@ -4,10 +4,10 @@
 # Variables
 WORKSPACE = Mumi.xcworkspace
 SCHEME = Mumi
-DESTINATION = 'platform=iOS Simulator,name=iPhone 16 Pro'
+DESTINATION = 'platform=iOS Simulator,name=iPhone 16 Pro,arch=arm64'
 
 # Targets
-.PHONY: all build test lint
+.PHONY: all build test lint clean
 
 all: build
 
@@ -26,4 +26,8 @@ test-ui:
 
 lint:
 	swift package plugin --allow-writing-to-package-directory swiftlint
+
+clean:
+	rm -rf ~/Library/Developer/Xcode/DerivedData/Mumi-*
+
 

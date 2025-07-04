@@ -34,7 +34,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AccessibilityIdentifiers.swift,
-				icon.png,
 			);
 			target = BE8EA97E2E116D0F00B214A1 /* MumiUITests */;
 		};
@@ -42,7 +41,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AccessibilityIdentifiers.swift,
-				icon.png,
 			);
 			target = BE8EA9742E116D0F00B214A1 /* MumiTests */;
 		};

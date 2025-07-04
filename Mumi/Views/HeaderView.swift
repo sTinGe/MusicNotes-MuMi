@@ -5,10 +5,7 @@ struct HeaderView: View {
 
     var body: some View {
         HStack {
-            Text("Mumi")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(Color.Theme.text)
+//            Image(uiImage: UIImage(named: "header_text") ?? UIImage())
             Spacer()
             Button(action: onAdd) {
                 Image(systemName: "plus")
