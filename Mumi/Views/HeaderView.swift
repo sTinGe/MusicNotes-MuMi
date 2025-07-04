@@ -5,7 +5,7 @@ struct HeaderView: View {
 
     var body: some View {
         HStack {
-            Text("My Scores")
+            Text("Mumi")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color.Theme.text)
