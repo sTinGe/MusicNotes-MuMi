@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ScoreDetailView: View {
@@ -13,14 +12,16 @@ struct ScoreDetailView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }, progress: $progress)
             PDFKitView(url: score.url)
-            ScoreDetailFooterView(onPlay: {
-                // TODO: Implement play functionality
-            }, onStop: {
-                // TODO: Implement stop functionality
-            })
+                .padding(16)
+//            ScoreDetailFooterView(onPlay: {
+//                // TODO: Implement play functionality
+//            }, onStop: {
+//                // TODO: Implement stop functionality
+//            })
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .background(Color.Theme.background)
         .accessibilityIdentifier(AccessibilityIdentifiers.scoreDetailView)
     }
 }

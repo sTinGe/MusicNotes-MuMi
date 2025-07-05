@@ -11,14 +11,13 @@ struct ScoreLibraryView: View {
     @StateObject private var viewModel = ScoreLibraryViewModel()
     @State private var isImporterPresented = false
     @State private var isRenameSheetPresented = false
-    @State private var scoreToRename: Score? = nil
+    @State private var scoreToRename: Score?
     @State private var newFilenameInput: String = ""
 
     let columns = [
         // add to be 300
         GridItem(.adaptive(minimum: 120)),
-        GridItem(.adaptive(minimum: 180)),
-        
+        GridItem(.adaptive(minimum: 180))
     ]
 
     var body: some View {
@@ -35,19 +34,12 @@ struct ScoreLibraryView: View {
                                 ScoreThumbnailView(score: score)
                             }
                             .buttonStyle(PlainButtonStyle())
-                            .contextMenu {
-                                Button {
-                                    scoreToRename = score
-                                    isRenameSheetPresented = true
-                                } label: {
-                                    Label("Rename", systemImage: "pencil").accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailMenuButtonRenameLabel)
-                                }
-                                Button(role: .destructive) {
-                                    viewModel.deleteScore(score)
-                                } label: {
-                                    Label("Delete", systemImage: "trash").accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailMenuButtonDeleteLabel)
-                                }
-                            }
+                            .scoreContextMenu(
+                                score: score,
+                                viewModel: viewModel,
+                                scoreToRename: $scoreToRename,
+                                isRenameSheetPresented: $isRenameSheetPresented,
+                            )
                         }
                     }
                 }
@@ -83,7 +75,7 @@ struct ScoreLibraryView: View {
             TextField("New Filename", text: $newFilenameInput)
             Button("Rename") {
                 if let score = scoreToRename {
-                    viewModel.renameScore(score: score, newFilename: newFilenameInput) { success in
+                    viewModel.renameScore(score: score, newFilename: newFilenameInput) { _ in
                         // No need to call loadScores() here, viewModel handles it
                     }
                 }
@@ -99,9 +91,3 @@ struct ScoreLibraryView: View {
         }
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScoreLibraryView()
-//    }
-//}

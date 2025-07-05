@@ -1,11 +1,10 @@
-
 import SwiftUI
 
 struct ProgressBarView: View {
     var progress: CGFloat
 
     var viewHeight: CGFloat = 24
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
