@@ -1,2 +1,4 @@
+excluded:
+  - .build
 disabled_rules:
   - todo
