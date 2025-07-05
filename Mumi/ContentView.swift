@@ -10,9 +10,15 @@ import SwiftUI
 struct ScoreLibraryView: View {
     @StateObject private var viewModel = ScoreLibraryViewModel()
     @State private var isImporterPresented = false
+    @State private var isRenameSheetPresented = false
+    @State private var scoreToRename: Score? = nil
+    @State private var newFilenameInput: String = ""
 
     let columns = [
-        GridItem(.adaptive(minimum: 150))
+        // add to be 300
+        GridItem(.adaptive(minimum: 120)),
+        GridItem(.adaptive(minimum: 180)),
+        
     ]
 
     var body: some View {
@@ -23,14 +29,19 @@ struct ScoreLibraryView: View {
                 })
 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
+                    LazyVGrid(columns: columns, spacing: 32) {
                         ForEach(viewModel.scores) { score in
                             NavigationLink(destination: ScoreDetailView(score: score)) {
                                 ScoreThumbnailView(score: score)
                             }
-                            .padding(8)
                             .buttonStyle(PlainButtonStyle())
                             .contextMenu {
+                                Button {
+                                    scoreToRename = score
+                                    isRenameSheetPresented = true
+                                } label: {
+                                    Label("Rename", systemImage: "pencil")
+                                }
                                 Button(role: .destructive) {
                                     viewModel.deleteScore(score)
                                 } label: {
@@ -39,9 +50,10 @@ struct ScoreLibraryView: View {
                             }
                         }
                     }
-                    .padding()
                 }
+                .padding(.top, 32)
             }
+            .padding(.horizontal, 24)
             .background(Color.Theme.background)
             .onAppear {
                 viewModel.loadScores()
@@ -62,6 +74,29 @@ struct ScoreLibraryView: View {
             .navigationBarHidden(true)
         }
         .navigationViewStyle(.stack)
+        .alert("Rename Score", isPresented: Binding<Bool>(
+            get: { scoreToRename != nil },
+            set: { newValue in
+                if !newValue { scoreToRename = nil }
+            }
+        )) {
+            TextField("New Filename", text: $newFilenameInput)
+            Button("Rename") {
+                if let score = scoreToRename {
+                    viewModel.renameScore(score: score, newFilename: newFilenameInput) {
+                        // No need to call loadScores() here, viewModel handles it
+                    }
+                }
+                scoreToRename = nil
+                newFilenameInput = ""
+            }
+            Button("Cancel", role: .cancel) {
+                scoreToRename = nil
+                newFilenameInput = ""
+            }
+        } message: {
+            Text("Enter a new name for \(scoreToRename?.filename ?? "this score").")
+        }
     }
 }
 
