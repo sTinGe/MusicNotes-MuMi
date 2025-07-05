@@ -1,6 +1,6 @@
 import XCTest
 
-final class th: XCTestCase {
+final class MumiScoreDetailNavigationTests: XCTestCase {
 
     var app: XCUIApplication!
 

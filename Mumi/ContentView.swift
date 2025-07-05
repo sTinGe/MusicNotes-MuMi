@@ -40,12 +40,12 @@ struct ScoreLibraryView: View {
                                     scoreToRename = score
                                     isRenameSheetPresented = true
                                 } label: {
-                                    Label("Rename", systemImage: "pencil")
+                                    Label("Rename", systemImage: "pencil").accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailMenuButtonRenameLabel)
                                 }
                                 Button(role: .destructive) {
                                     viewModel.deleteScore(score)
                                 } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    Label("Delete", systemImage: "trash").accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailMenuButtonDeleteLabel)
                                 }
                             }
                         }
@@ -100,8 +100,8 @@ struct ScoreLibraryView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScoreLibraryView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScoreLibraryView()
+//    }
+//}
