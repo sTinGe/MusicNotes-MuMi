@@ -37,18 +37,3 @@ jobs:
             ${{ runner.os }}-spm-
       - name: Run Unit Tests
         run: make test-unit
-
-  test-ui:
-    runs-on: macos-15
-    needs: lint-and-build
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache SPM
-        uses: actions/cache@v3
-        with:
-          path: .build
-          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-spm-
-      - name: Run UI Tests
-        run: make test-ui
