@@ -19,6 +19,7 @@ struct HeaderView: View {
                             .font(.largeTitle)
                             .foregroundColor(Color.Theme.accent)
                     }
+                    .accessibilityIdentifier(AccessibilityIdentifiers.addButton)
                 }
             }
 
