@@ -9,9 +9,14 @@ class ScoreServiceTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         scoreService = ScoreService() // Use default initializer
-        documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        documentsDirectory = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        )[0]
         // Clean up documents directory before each test
-        let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
+        let fileURLs = try FileManager.default.contentsOfDirectory(
+            at: documentsDirectory, includingPropertiesForKeys: nil
+        )
         for fileURL in fileURLs {
             try FileManager.default.removeItem(at: fileURL)
         }

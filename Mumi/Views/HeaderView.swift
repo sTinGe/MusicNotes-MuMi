@@ -24,7 +24,8 @@ struct HeaderView: View {
             }
 
             ZStack(alignment: .leading) {
-                TextField("", text: $searchText, prompt: Text("Search...").foregroundColor(Color.Theme.text.opacity(0.5)))
+                TextField("", text: $searchText, prompt: Text("Search...")
+                    .foregroundColor(Color.Theme.text.opacity(0.5)))
                     .foregroundColor(Color.Theme.text)
                     .padding(.leading, 30)
                     .padding(10)

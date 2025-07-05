@@ -1,4 +1,3 @@
-
 import XCTest
 @testable import Mumi
 
@@ -14,7 +13,9 @@ class ScoreLibraryViewModelTests: XCTestCase {
         viewModel = ScoreLibraryViewModel(scoreService: scoreService)
         documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         // Clean up documents directory before each test
-        let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil)
+        let fileURLs = try FileManager.default.contentsOfDirectory(
+            at: documentsDirectory, includingPropertiesForKeys: nil
+        )
         for fileURL in fileURLs {
             try FileManager.default.removeItem(at: fileURL)
         }

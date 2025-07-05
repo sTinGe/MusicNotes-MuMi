@@ -23,11 +23,13 @@ class MumiImportTests: XCTestCase {
         // Tap on "Call_Of_Silence.pdf"
         // Assuming Call_Of_Silence.pdf is directly visible or easily accessible from the initial document picker view.
         let callOfSilencePdf = app.collectionViews.staticTexts["Call_Of_Silence"]
-        XCTAssertTrue(callOfSilencePdf.waitForExistence(timeout: 10), "Call_Of_Silence.pdf should be visible in the document picker.")
+        XCTAssertTrue(callOfSilencePdf.waitForExistence(timeout: 10),
+                      "Call_Of_Silence.pdf should be visible in the document picker.")
         callOfSilencePdf.tap()
 
         // Verify that the score appears in the library
         let importedScore = app.staticTexts["Call_Of_Silence"]
-        XCTAssertTrue(importedScore.waitForExistence(timeout: 10), "Imported 'Call_Of_Silence.pdf' score should be visible in the library")
+        XCTAssertTrue(importedScore.waitForExistence(timeout: 10),
+                      "Imported 'Call_Of_Silence.pdf' score should be visible in the library")
     }
 }

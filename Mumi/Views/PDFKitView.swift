@@ -1,4 +1,3 @@
-
 import SwiftUI
 import PDFKit
 
@@ -10,6 +9,12 @@ struct PDFKitView: UIViewRepresentable {
         pdfView.document = PDFDocument(url: self.url)
         pdfView.autoScales = true
         pdfView.displayMode = .singlePageContinuous
+        for subview in pdfView.subviews {
+            if let scrollView = subview as? UIScrollView {
+                scrollView.showsVerticalScrollIndicator = false
+                break
+            }
+        }
         return pdfView
     }
 

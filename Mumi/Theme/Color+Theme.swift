@@ -1,7 +1,8 @@
 import SwiftUI
 
-// We prefix our custom color names with "Theme" to avoid conflicts with system-defined colors like `Color.primary` and `Color.secondary`.
-// This prevents Xcode warnings and ensures we are always using our custom theme colors.
+// We prefix our custom color names with "Theme" to avoid conflicts with system-defined colors
+// like `Color.primary` and `Color.secondary`. This prevents Xcode warnings and ensures we are
+// always using our custom theme colors.
 extension Color {
     struct Theme {
         static var background: Color { Color("Background") }
