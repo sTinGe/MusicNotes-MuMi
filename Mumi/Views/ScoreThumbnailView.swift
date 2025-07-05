@@ -21,6 +21,7 @@ struct ScoreThumbnailView: View {
             }
             .aspectRatio(1 / 1.3, contentMode: .fit)
             .cornerRadius(8, corners: [.topLeft, .topRight])
+            .padding(4)
 
             Text(score.url.deletingPathExtension().lastPathComponent)
                 .font(.headline)

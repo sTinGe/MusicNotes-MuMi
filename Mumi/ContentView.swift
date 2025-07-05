@@ -29,7 +29,7 @@ struct ScoreLibraryView: View {
                 })
 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 32) {
+                    LazyVGrid(columns: columns, spacing: 8) {
                         ForEach(viewModel.scores) { score in
                             NavigationLink(destination: ScoreDetailView(score: score)) {
                                 ScoreThumbnailView(score: score)
