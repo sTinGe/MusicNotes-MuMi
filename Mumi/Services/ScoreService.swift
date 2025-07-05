@@ -59,4 +59,15 @@ class ScoreService {
         }
         return page.thumbnail(of: CGSize(width: 600, height: 800), for: .artBox)
     }
+
+    func renameScore(score: Score, newFilename: String) -> URL? {
+        let newURL = score.url.deletingLastPathComponent().appendingPathComponent(newFilename)
+        do {
+            try fileManager.moveItem(at: score.url, to: newURL)
+            return newURL
+        } catch {
+            print("Error renaming file: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

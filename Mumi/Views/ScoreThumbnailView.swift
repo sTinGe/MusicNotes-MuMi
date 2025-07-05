@@ -5,41 +5,33 @@ struct ScoreThumbnailView: View {
     @State private var thumbnail: UIImage? = nil
 
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 0) {
             ZStack {
                 if let uiImage = thumbnail {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
                 } else {
-                    Text(score.filename)
-                        .font(.system(size: 18, weight: .semibold))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color.Theme.text)
-                        .padding(5)
+                    Rectangle()
+                        .fill(Color.Theme.surface)
+                    ProgressView()
                 }
             }
-            .frame(width: 130, height: 150)
-            .background(Color.Theme.surface)
-            .cornerRadius(8)
-            .padding(-4)
-            .accessibilityIdentifier(AccessibilityIdentifiers.scoreThumbnailPreviewArea)
+            .aspectRatio(1 / 1.3, contentMode: .fit)
+            .cornerRadius(8, corners: [.topLeft, .topRight])
 
-            Text(score.filename)
-                .font(.caption)
-                .foregroundColor(Color.Theme.text)
+            Text(score.url.deletingPathExtension().lastPathComponent)
+                .font(.headline)
                 .lineLimit(1)
+                .foregroundColor(Color.Theme.text)
                 .truncationMode(.tail)
+                .padding(8)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.Theme.surface)
         }
-        .padding(15)
-        .frame(minHeight: 200)
-        .background(Color.Theme.surface)
-        .cornerRadius(12)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.Theme.secondary, lineWidth: 1)
-        )
-        .contentShape(RoundedRectangle(cornerRadius: 12))
+        .cornerRadius(8)
         .onAppear {
             DispatchQueue.global(qos: .userInitiated).async {
                 let scoreService = ScoreService()
@@ -49,5 +41,22 @@ struct ScoreThumbnailView: View {
                 }
             }
         }
+    }
+}
+
+
+private extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+}
+
+private struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }
