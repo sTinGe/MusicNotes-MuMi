@@ -83,7 +83,7 @@ struct ScoreLibraryView: View {
             TextField("New Filename", text: $newFilenameInput)
             Button("Rename") {
                 if let score = scoreToRename {
-                    viewModel.renameScore(score: score, newFilename: newFilenameInput) {
+                    viewModel.renameScore(score: score, newFilename: newFilenameInput) { success in
                         // No need to call loadScores() here, viewModel handles it
                     }
                 }

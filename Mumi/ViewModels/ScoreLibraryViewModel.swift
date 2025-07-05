@@ -5,12 +5,8 @@ class ScoreLibraryViewModel: ObservableObject {
 
     let scoreService: ScoreService
 
-    init() {
-        if ProcessInfo.processInfo.arguments.contains("-uiTestMode") {
-            self.scoreService = MockScoreService()
-        } else {
-            self.scoreService = ScoreService()
-        }
+    init(scoreService: ScoreService = ScoreService()) {
+        self.scoreService = scoreService
     }
 
     func loadScores() {
@@ -27,12 +23,14 @@ class ScoreLibraryViewModel: ObservableObject {
         loadScores()
     }
 
-    func renameScore(score: Score, newFilename: String, completion: @escaping () -> Void) {
+    func renameScore(score: Score, newFilename: String, completion: @escaping (Bool) -> Void) {
         if let newURL = scoreService.renameScore(score: score, newFilename: newFilename) {
             if let index = scores.firstIndex(where: { $0.id == score.id }) {
                 scores[index] = Score(filename: newURL.lastPathComponent, url: newURL)
+                completion(true)
+                return
             }
         }
-        completion()
+        completion(false)
     }
 }
