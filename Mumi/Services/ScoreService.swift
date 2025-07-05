@@ -2,7 +2,11 @@ import Foundation
 import PDFKit
 
 class ScoreService {
-    private let fileManager = FileManager.default
+    private var fileManager: FileManager
+
+    init(fileManager: FileManager = .default) {
+        self.fileManager = fileManager
+    }
     private var documentsDirectory: URL {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
