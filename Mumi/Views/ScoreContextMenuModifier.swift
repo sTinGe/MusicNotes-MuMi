@@ -44,7 +44,7 @@ extension View {
         score: Score,
         viewModel: ScoreLibraryViewModel,
         scoreToRename: Binding<Score?>,
-        isRenameSheetPresented: Binding<Bool>,
+        isRenameSheetPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
             ScoreContextMenuModifier(
