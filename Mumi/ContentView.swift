@@ -38,7 +38,7 @@ struct ScoreLibraryView: View {
                                 score: score,
                                 viewModel: viewModel,
                                 scoreToRename: $scoreToRename,
-                                isRenameSheetPresented: $isRenameSheetPresented,
+                                isRenameSheetPresented: $isRenameSheetPresented
                             )
                         }
                     }
