@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ScoreThumbnailView: View {
     let score: Score
-    @State private var thumbnail: UIImage? = nil
+    @State private var thumbnail: UIImage?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,6 +21,7 @@ struct ScoreThumbnailView: View {
             }
             .aspectRatio(1 / 1.3, contentMode: .fit)
             .cornerRadius(8, corners: [.topLeft, .topRight])
+            .padding(4)
 
             Text(score.url.deletingPathExtension().lastPathComponent)
                 .font(.headline)
@@ -28,7 +29,8 @@ struct ScoreThumbnailView: View {
                 .foregroundColor(Color.Theme.text)
                 .truncationMode(.tail)
                 .padding(8)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity,
+                       alignment: .leading)
                 .background(Color.Theme.surface)
         }
         .cornerRadius(8)
@@ -44,7 +46,6 @@ struct ScoreThumbnailView: View {
     }
 }
 
-
 private extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
@@ -56,7 +57,11 @@ private struct RoundedCorner: Shape {
     var corners: UIRectCorner = .allCorners
 
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
         return Path(path.cgPath)
     }
 }

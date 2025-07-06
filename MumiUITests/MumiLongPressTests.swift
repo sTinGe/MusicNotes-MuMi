@@ -18,9 +18,7 @@ final class MumiLongPressTests: XCTestCase {
     func testLongPressToScoreThumbnailViewAfterImport() throws {
         let importedScore = app.staticTexts.firstMatch
         importedScore.press(forDuration: 2.0)
-        
 //        let rename = app.collectionViews.firstMatch
 //        rename.tap()
     }
 }
-
