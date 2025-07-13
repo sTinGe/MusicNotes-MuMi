@@ -31,7 +31,7 @@ struct PlaybackControlPanel: View {
                         .bold()
                         .foregroundColor(.white)
                     Spacer()
-                    Text(bpm == nil ? "- BPM" : "\(bpm!) BPM")
+                    Text(bpm == nil ? "- BPM" : "\(bpm ?? 0) BPM")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
