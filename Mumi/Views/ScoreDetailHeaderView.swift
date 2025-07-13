@@ -17,10 +17,6 @@ struct ScoreDetailHeaderView: View {
                 ProgressBarView(progress: progress)
                     .padding(.horizontal, 4)
                     .padding(.trailing, 8)
-//                TextField("", value: $progress, formatter: NumberFormatter())
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .keyboardType(.decimalPad)
-//                    .frame(width: 50)
             }
         }
         .padding(8)

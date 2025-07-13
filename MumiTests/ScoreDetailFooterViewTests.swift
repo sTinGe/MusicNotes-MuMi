@@ -14,8 +14,8 @@ final class ScoreDetailFooterViewTests: XCTestCase {
 
     func testScoreDetailFooterView_buttonsAreTappable() throws {
         // 1. Arrange
-        let playExpectation = XCTestExpectation(description: "Play action was called")
-        let stopExpectation = XCTestExpectation(description: "Stop action was called")
+        let playExpectation = XCTestExpectation(description: "onPlay closure was called")
+        let stopExpectation = XCTestExpectation(description: "onStop closure was called")
         
         let view = ScoreDetailFooterView(onPlay: {
             playExpectation.fulfill()
@@ -23,17 +23,15 @@ final class ScoreDetailFooterViewTests: XCTestCase {
             stopExpectation.fulfill()
         })
 
-        let exp = view.inspection.inspect { inspectedView in
-            // 2. Act
-            let playButton = try inspectedView.find(viewWithAccessibilityIdentifier: AccessibilityIdentifiers.playButton)
-            let stopButton = try inspectedView.find(viewWithAccessibilityIdentifier: AccessibilityIdentifiers.stopButton)
-            
-            try playButton.button().tap()
-            try stopButton.button().tap()
-        }
+        // 2. Act
+        let inspectedView = try view.inspect()
+        let playButton = try inspectedView.find(viewWithAccessibilityIdentifier: AccessibilityIdentifiers.playButton)
+        let stopButton = try inspectedView.find(viewWithAccessibilityIdentifier: AccessibilityIdentifiers.stopButton)
+        
+        try playButton.button().tap()
+        try stopButton.button().tap()
         
         // 3. Assert
-        ViewHosting.host(view: view)
-        wait(for: [exp, playExpectation, stopExpectation], timeout: 1.0)
+        wait(for: [playExpectation, stopExpectation], timeout: 0.1)
     }
 }

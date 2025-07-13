@@ -21,6 +21,10 @@ struct AccessibilityIdentifiers {
     // ScoreDetailFooterView
     static let playButton = "play_button"
     static let stopButton = "stop_button"
+
+    // CustomTempoSlider
+    static let sliderThumb = "slider_thumb"
+    static let sliderTrack = "slider_track"
     
     // ScoreDetailView
     static let pdfKitView = "pdf_kit_view"
