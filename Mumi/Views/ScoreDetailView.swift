@@ -5,6 +5,7 @@ struct ScoreDetailView: View {
     let score: Score
 
     @State private var progress: CGFloat = 0.0
+    @State private var isShowingPlaybackPanel = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -13,15 +14,27 @@ struct ScoreDetailView: View {
             }, progress: $progress)
             PDFKitView(url: score.url)
                 .padding(16)
-//            ScoreDetailFooterView(onPlay: {
-//                // TODO: Implement play functionality
-//            }, onStop: {
-//                // TODO: Implement stop functionality
-//            })
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .background(Color.Theme.background)
         .accessibilityIdentifier(AccessibilityIdentifiers.scoreDetailView)
+        .overlay(alignment: .bottomTrailing) {
+            Button {
+                isShowingPlaybackPanel.toggle()
+            } label: {
+                Image(systemName: "light.panel.fill")
+                    .font(.largeTitle)
+                    .padding()
+                    .background(Color.Theme.surface)
+                    .foregroundColor(Color.Theme.onSurface)
+                    .clipShape(Circle())
+                    .shadow(radius: 5)
+            }
+            .padding(32)
+        }
+        .overlay {
+            PlaybackControlPanel(score: score, isShowing: $isShowingPlaybackPanel)
+        }
     }
 }
