@@ -25,7 +25,7 @@ struct AccessibilityIdentifiers {
     // CustomTempoSlider
     static let sliderThumb = "slider_thumb"
     static let sliderTrack = "slider_track"
-    
-    // ScoreDetailView
-    static let pdfKitView = "pdf_kit_view"
+
+    // ToastView
+    static let toastText = "toast_text"
 }
