@@ -13,6 +13,7 @@ struct ScoreDetailView: View {
             }, progress: $progress)
             PDFKitView(url: score.url)
                 .padding(16)
+                .accessibilityIdentifier(AccessibilityIdentifiers.pdfKitView)
 //            ScoreDetailFooterView(onPlay: {
 //                // TODO: Implement play functionality
 //            }, onStop: {

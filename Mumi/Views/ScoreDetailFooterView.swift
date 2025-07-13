@@ -13,12 +13,14 @@ struct ScoreDetailFooterView: View {
                     .font(.title)
                     .foregroundColor(Color.Theme.accent)
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.playButton)
             Spacer()
             Button(action: onStop) {
                 Image(systemName: "stop.fill")
                     .font(.title)
                     .foregroundColor(Color.Theme.accent)
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.stopButton)
             Spacer()
             HStack {
                 Image(systemName: "metronome")

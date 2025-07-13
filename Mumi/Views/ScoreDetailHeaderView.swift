@@ -12,6 +12,7 @@ struct ScoreDetailHeaderView: View {
                         .font(.largeTitle)
                         .foregroundColor(Color.Theme.accent)
                 }
+                .accessibilityIdentifier(AccessibilityIdentifiers.backButton)
                 .padding(.leading, 8)
                 ProgressBarView(progress: progress)
                     .padding(.horizontal, 4)
