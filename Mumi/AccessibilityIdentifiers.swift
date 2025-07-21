@@ -28,4 +28,13 @@ struct AccessibilityIdentifiers {
 
     // ToastView
     static let toastText = "toast_text"
+
+    // PlaybackControlPanel
+    static let playbackControlPanel = "playback_control_panel"
+    static let playbackControlPanelBpmText = "playback_control_panel_bpm_text"
+    static let playbackControlPanelPlayButton = "playback_control_panel_play_button"
+    static let playbackControlPanelTempoSlider = "playback_control_panel_tempo_slider"
+    static let playbackControlPanelDragHandle = "playback_control_panel_drag_handle"
+    static let playbackControlPanelScoreTitle = "playback_control_panel_score_title"
+    static let playbackControlToastView = "playback_control_panel_toast_view"
 }
