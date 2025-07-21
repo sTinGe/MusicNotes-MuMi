@@ -34,8 +34,8 @@ final class CustomTempoSliderTests: XCTestCase {
         try gesture.callOnChanged(value: dragValue)
         XCTAssertEqual(value.wrappedValue, 120, accuracy: 1)
         XCTAssertTrue(editingChanged, "onEditingChanged should be true during drag")
-//
-//        // Call onEnded
+
+        // Call onEnded
         try gesture.callOnEnded(value: dragValue)
         XCTAssertEqual(value.wrappedValue, 120, accuracy: 1) // Value should remain the same
         XCTAssertFalse(editingChanged, "onEditingChanged should be false after drag ends")
