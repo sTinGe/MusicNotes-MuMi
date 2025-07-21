@@ -48,6 +48,13 @@ xcodebuild build -workspace Mumi.xcworkspace -scheme Mumi -destination 'platform
 - **Unit Tests Location:** `MumiTests/`
 - **UI Tests Location:** `MumiUITests/`
 - **Test Scheme:** `MumiTests`
+- **View Testing Library:** `ViewInspector`
+
+**View Testing Convention:**
+To ensure tests are robust and decoupled from UI details like button text or image names, we will use the following convention:
+1.  Add a new `static let` constant for the identifier to the `AccessibilityIdentifiers.swift` file.
+2.  Add the `.accessibilityIdentifier()` modifier to the view that needs to be found in a test, using the constant from the previous step.
+3.  In the test, use `view.inspect().find(viewWithAccessibilityIdentifier: AccessibilityIdentifiers.yourIdentifier)` to locate the view.
 
 **To run tests from the command line:**
 ```bash

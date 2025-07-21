@@ -14,11 +14,13 @@ struct ProgressBarView: View {
                 Rectangle()
                     .foregroundColor(Color.blue)
                     .frame(width: min(progress * geometry.size.width, geometry.size.width), height: viewHeight)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.progressBarForeground)
                 Text(String(format: "%.0f%%", min(progress, 1.0) * 100))
                     .font(.body)
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
                     .padding(.horizontal)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.progressBarPercentageText)
             }
             .cornerRadius(10)
         }

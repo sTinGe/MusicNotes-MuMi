@@ -14,6 +14,7 @@ struct ToastView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .padding(.bottom, 50)
+                .accessibilityIdentifier(AccessibilityIdentifiers.toastText)
         }
         .frame(width: UIScreen.main.bounds.width / 1.5)
         .transition(.opacity)

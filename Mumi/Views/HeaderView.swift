@@ -11,6 +11,7 @@ struct HeaderView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 30)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.headerImage)
 
                 HStack {
                     Spacer()
@@ -32,6 +33,7 @@ struct HeaderView: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(color: .gray.opacity(0.4), radius: 3, x: 1, y: 2)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.searchField)
 
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Color.Theme.secondary)

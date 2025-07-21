@@ -24,17 +24,20 @@ struct PlaybackControlPanel: View {
                     .cornerRadius(2.5)
                     .foregroundColor(.gray)
                     .padding(.vertical, 16)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanelDragHandle)
                 
                 HStack {
                     Text(score.url.deletingPathExtension().lastPathComponent)
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
+                        .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanelScoreTitle)
                     Spacer()
                     Text(bpm == nil ? "- BPM" : "\(bpm ?? 0) BPM")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
+                        .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanelBpmText)
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 16)
@@ -52,6 +55,7 @@ struct PlaybackControlPanel: View {
                         bpm = Int(tempo)
                     }
                 }
+                .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanelTempoSlider)
 
                 // Play/Pause Button
                 Button(action: {
@@ -67,6 +71,7 @@ struct PlaybackControlPanel: View {
                         .foregroundColor(bpm == nil ? .gray : .white)
                 }
                 .padding(.bottom, 32)
+                .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanelPlayButton)
             }
             .padding()
             .background(
@@ -92,11 +97,13 @@ struct PlaybackControlPanel: View {
                     panelOffset = isShowing ? 0 : UIScreen.main.bounds.height
                 }
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlPanel)
         }
         .edgesIgnoringSafeArea(.bottom)
         .overlay {
             if showToast {
                 ToastView(message: "Please set the tempo using the slider.", isShowing: $showToast)
+                    .accessibilityIdentifier(AccessibilityIdentifiers.playbackControlToastView)
             }
         }
     }
