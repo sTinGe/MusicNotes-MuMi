@@ -1,4 +1,4 @@
-# Foodiez – Control Panel Screen (iOS UI Design)
+# MuMi – Control Panel Screen (iOS UI Design)
 
 Design a clean, modern mobile UI screen for an iOS app titled MuMi – 
 a music sheet reader designed for Musicians.
